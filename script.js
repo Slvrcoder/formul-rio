@@ -14,6 +14,7 @@ form.addEventListener('submit', function(e){
     let cidade = document.getElementById('cidade').value;
     let possuiquintal = document.querySelector('input[name="quintal"]:checked');
     let jatevepet = document.querySelector('input[name="tevepet"]:checked');
+    let temposozinho = document.getElementById('temposozinho').value;
 
 
     document.getElementById('erroNome').textContent = '';
@@ -24,6 +25,7 @@ form.addEventListener('submit', function(e){
     document.getElementById('erroCidade').textContent = '';
     document.getElementById('erroPossuiQuintal').textContent = '';
     document.getElementById('erroJatevePet').textContent = '';
+    document.getElementById('erroTemposozinho').textContent = '';
 
     if (nome.length < 3){
         document.getElementById('erroNome').textContent =
@@ -68,6 +70,11 @@ form.addEventListener('submit', function(e){
     'Selecione uma opção';
     valido = false;
 }
+if (isNaN(temposozinho) || temposozinho < 0 || temposozinho > 8){
+    document.getElementById('erroTemposozinho').textContent =
+    'tempo sozinho não deve ser maior que 8 horas';
+    valido = false;
+}
 
     if (valido){
         document.getElementById('resultado').innerHTML = `
@@ -79,7 +86,8 @@ form.addEventListener('submit', function(e){
             Idade: ${idade} <br>
             Cidade: ${cidade} <br>
             Possui Quintal: ${possuiquintal ? 'Sim' : 'Não'} <br>
-            Já teve Pet: ${jatevepet ? 'Sim' : 'Não'}
+            Já teve Pet: ${jatevepet ? 'Sim' : 'Não'} <br>
+            Tempo Sozinho: ${temposozinho} horas
 
         `;
     }
