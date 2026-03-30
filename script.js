@@ -16,6 +16,7 @@ form.addEventListener('submit', function(e){
     let jatevepet = document.querySelector('input[name="tevepet"]:checked');
     let temposozinho = document.getElementById('temposozinho').value;
     let motivo = document.getElementById('motivo').value;
+    let termos = document.getElementById('termos').checked;
 
 
     document.getElementById('erroNome').textContent = '';
@@ -28,6 +29,7 @@ form.addEventListener('submit', function(e){
     document.getElementById('erroJatevePet').textContent = '';
     document.getElementById('erroTemposozinho').textContent = '';
     document.getElementById('erroMotivo').textContent = '';
+    document.getElementById('erroTermos').textContent = '';
 
     if (nome.length < 3){
         document.getElementById('erroNome').textContent =
@@ -82,6 +84,11 @@ if (motivo.length === 0){
     'Motivo é obrigatório';
     valido = false;
 }
+if (!termos){
+    document.getElementById('erroTermos').textContent =
+    'Você deve aceitar os termos de responsabilidade';
+    valido = false;
+}
 
     if (valido){
         document.getElementById('resultado').innerHTML = `
@@ -96,6 +103,7 @@ if (motivo.length === 0){
             Já teve Pet: ${jatevepet ? 'Sim' : 'Não'} <br>
             Tempo Sozinho: ${temposozinho} horas <br>
             Motivo: ${motivo} <br>
+            Aceito os termos de responsabilidade: ${termos ? 'Sim' : 'Não'}
 
         `;
     }
