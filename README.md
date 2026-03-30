@@ -1,0 +1,1 @@
+Projeto escolar, em que fomos desafiados a criar um formulário com validação individualmente, seguindo requisitos dados pelo professor e regras de negócio, além de boas práticas de programação aprendidas anteriormente
