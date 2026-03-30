@@ -11,12 +11,14 @@ form.addEventListener('submit', function(e){
     let telefone = document.getElementById('telefone').value;
     let CPF = document.getElementById('CPF').value;
     let idade = document.getElementById('idade').value;
+    let cidade = document.getElementById('cidade').value;
 
     document.getElementById('erroNome').textContent = '';
     document.getElementById('erroEmail').textContent = '';
     document.getElementById('erroTelefone').textContent = '';
     document.getElementById('erroCPF').textContent = '';
     document.getElementById('erroIdade').textContent = '';
+    document.getElementById('erroCidade').textContent = '';
 
     if (nome.length < 3){
         document.getElementById('erroNome').textContent =
@@ -46,6 +48,11 @@ form.addEventListener('submit', function(e){
         'Você deve ser maior de 18 anos';
         valido = false;
     }
+    if (cidade.length === 0){
+        document.getElementById('erroCidade').textContent =
+        'Cidade é obrigatória';
+        valido = false;
+    }
 
     if (valido){
         document.getElementById('resultado').innerHTML = `
@@ -55,7 +62,8 @@ form.addEventListener('submit', function(e){
             Telefone: ${telefone} <br>
             CPF: ${CPF} <br>
             Idade: ${idade} <br>
-            
+            Cidade: ${cidade} <br>
+
         `;
     }
 
