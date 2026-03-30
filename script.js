@@ -1,47 +1,44 @@
-let from = document.getElementById('forms')
+let form = document.getElementById('forms');
 
-from.addEventListener('submit'), function(e){
-
+form.addEventListener('submit', function(e){
 
     e.preventDefault();
 
-    let valido = true
+    let valido = true;
 
-    let nome = document.getElementById ('nome').value;
-    let email = document.getElementById ('email').value;
-    let senha = document.getElementById ('senha').value;
+    let nome = document.getElementById('nome').value;
+    let email = document.getElementById('email').value;
+    let telefone = document.getElementById('telefone').value;
 
-    document.getElementById ('errorNome'). textContent = '';
-    document.getElementById ('errorEmail'). textContent = '';
-    document.getElementById ('error'). textContent = '';
+    document.getElementById('erroNome').textContent = '';
+    document.getElementById('erroEmail').textContent = '';
+    document.getElementById('erroTelefone').textContent = '';
 
-    if (nome.length < 3 ){
-
-        document.getElementById('errorNome').textContent = 'Nome deve ter pelo menos 3 caracteres'
-
-        valido = false
-    }
-
-    if (!email.includes('@')) {
-        document.getElementById('erroemail').textContent = 'Email inválido.';
-        valido = false
-    }
-
-    if (senha.length < 6){
-        document.getElementById('errosenha').textContent = 'Senha inválida, deve conter 6 caracteres no minimo.';
+    if (nome.length < 3){
+        document.getElementById('erroNome').textContent =
+        'Nome deve ter pelo menos 3 caracteres';
         valido = false;
-    
+    }
+
+    if (!email.includes('@')){
+        document.getElementById('erroEmail').textContent =
+        'Email inválido';
+        valido = false;
+    }
+
+    if (telefone.length < 10){
+        document.getElementById('erroTelefone').textContent =
+        'Telefone deve ter no mínimo 10 caracteres';
+        valido = false;
     }
 
     if (valido){
-        let resultado = document.getElementById('resultado');
-
-        resultado.innerHTML = 'dados'
-        
-        
-
+        document.getElementById('resultado').innerHTML = `
+            <h3>Dados enviados:</h3>
+            Nome: ${nome} <br>
+            Email: ${email} <br>
+            Telefone: ${telefone}
+        `;
     }
 
-    
-}
-
+});
