@@ -9,10 +9,12 @@ form.addEventListener('submit', function(e){
     let nome = document.getElementById('nome').value;
     let email = document.getElementById('email').value;
     let telefone = document.getElementById('telefone').value;
+    let CPF = document.getElementById('CPF').value;
 
     document.getElementById('erroNome').textContent = '';
     document.getElementById('erroEmail').textContent = '';
     document.getElementById('erroTelefone').textContent = '';
+    document.getElementById('erroCPF').textContent = '';
 
     if (nome.length < 3){
         document.getElementById('erroNome').textContent =
@@ -32,12 +34,19 @@ form.addEventListener('submit', function(e){
         valido = false;
     }
 
+    if (CPF.length !== 11){
+        document.getElementById('erroCPF').textContent =
+        'CPF deve ter 11 dígitos';
+        valido = false;
+    }
+
     if (valido){
         document.getElementById('resultado').innerHTML = `
             <h3>Dados enviados:</h3>
             Nome: ${nome} <br>
             Email: ${email} <br>
-            Telefone: ${telefone}
+            Telefone: ${telefone} <br>
+            CPF: ${CPF}
         `;
     }
 
