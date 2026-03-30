@@ -10,11 +10,13 @@ form.addEventListener('submit', function(e){
     let email = document.getElementById('email').value;
     let telefone = document.getElementById('telefone').value;
     let CPF = document.getElementById('CPF').value;
+    let idade = document.getElementById('idade').value;
 
     document.getElementById('erroNome').textContent = '';
     document.getElementById('erroEmail').textContent = '';
     document.getElementById('erroTelefone').textContent = '';
     document.getElementById('erroCPF').textContent = '';
+    document.getElementById('erroIdade').textContent = '';
 
     if (nome.length < 3){
         document.getElementById('erroNome').textContent =
@@ -39,6 +41,11 @@ form.addEventListener('submit', function(e){
         'CPF deve ter 11 dígitos';
         valido = false;
     }
+    if (isNaN(idade) || idade < 18){
+        document.getElementById('erroIdade').textContent =
+        'Você deve ser maior de 18 anos';
+        valido = false;
+    }
 
     if (valido){
         document.getElementById('resultado').innerHTML = `
@@ -46,7 +53,9 @@ form.addEventListener('submit', function(e){
             Nome: ${nome} <br>
             Email: ${email} <br>
             Telefone: ${telefone} <br>
-            CPF: ${CPF}
+            CPF: ${CPF} <br>
+            Idade: ${idade} <br>
+            
         `;
     }
 
