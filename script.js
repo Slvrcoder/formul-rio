@@ -12,6 +12,9 @@ form.addEventListener('submit', function(e){
     let CPF = document.getElementById('CPF').value;
     let idade = document.getElementById('idade').value;
     let cidade = document.getElementById('cidade').value;
+    let possuiquintal = document.querySelector('input[name="quintal"]:checked');
+    let jatevepet = document.querySelector('input[name="tevepet"]:checked');
+
 
     document.getElementById('erroNome').textContent = '';
     document.getElementById('erroEmail').textContent = '';
@@ -19,6 +22,8 @@ form.addEventListener('submit', function(e){
     document.getElementById('erroCPF').textContent = '';
     document.getElementById('erroIdade').textContent = '';
     document.getElementById('erroCidade').textContent = '';
+    document.getElementById('erroPossuiQuintal').textContent = '';
+    document.getElementById('erroJatevePet').textContent = '';
 
     if (nome.length < 3){
         document.getElementById('erroNome').textContent =
@@ -53,6 +58,16 @@ form.addEventListener('submit', function(e){
         'Cidade é obrigatória';
         valido = false;
     }
+    if (!possuiquintal){
+    document.getElementById('erroPossuiQuintal').textContent =
+    'Selecione uma opção';
+    valido = false;
+}
+    if (!jatevepet){
+    document.getElementById('erroJatevePet').textContent =
+    'Selecione uma opção';
+    valido = false;
+}
 
     if (valido){
         document.getElementById('resultado').innerHTML = `
@@ -63,6 +78,8 @@ form.addEventListener('submit', function(e){
             CPF: ${CPF} <br>
             Idade: ${idade} <br>
             Cidade: ${cidade} <br>
+            Possui Quintal: ${possuiquintal ? 'Sim' : 'Não'} <br>
+            Já teve Pet: ${jatevepet ? 'Sim' : 'Não'}
 
         `;
     }
